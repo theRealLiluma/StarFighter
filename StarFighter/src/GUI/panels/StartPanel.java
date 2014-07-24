@@ -2,6 +2,7 @@ package GUI.panels;
 
 import GUI.GuiController;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -22,12 +23,14 @@ public class StartPanel extends JPanel{
     public StartPanel(){
         //loadBackground image
         BufferedImage background;
+        File file = null;
         try {
-            background = ImageIO.read(new File("src/assets/images/startScreen/startScreen1.jpg"));
+            //file = new File("src/assets/images/startScreen/startScreen1.jpg");
+            background = ImageIO.read(StartPanel.class.getResourceAsStream("/assets/images/startScreen/startScreen1.jpg"));
+            //ImageIO.read(file);
             //resizeBackground image
             backgroundImage = ImageResizer.getInstance().resizeImage(background, GuiController.getInstance().getWidth(), GuiController.getInstance().getHeight());
-        } catch (IOException ioe) {
-            JOptionPane.showMessageDialog(null, "error loading image");
+        } catch (Exception ioe) {
             ioe.printStackTrace();
         }
     }
