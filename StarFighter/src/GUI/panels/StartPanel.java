@@ -21,10 +21,7 @@ public class StartPanel extends JPanel{
     public StartPanel(){
         //loadBackground image
         try{
-            BufferedImage background = ImageIO.read(StartPanel.class.getResourceAsStream("/assets/images/startScreen/startScreen1.jpg"));
-            //ImageIO.read(file);
-            //resizeBackground image
-            backgroundImage = ImageResizer.getInstance().resizeImage(background, GuiController.getInstance().getWidth(), GuiController.getInstance().getHeight());
+            backgroundImage = ImageIO.read(StartPanel.class.getResourceAsStream("/assets/images/startScreen/startScreen1.jpg"));
         }catch(IOException ioe){
             ioe.printStackTrace();
         }
@@ -34,6 +31,6 @@ public class StartPanel extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponents(g);
-        g.drawImage(backgroundImage, 0, 0, null);
+        g.drawImage(ImageResizer.getInstance().resizeImage(backgroundImage, GuiController.getInstance().getWidth(), GuiController.getInstance().getHeight()), 0, 0, null);
     }
 }
