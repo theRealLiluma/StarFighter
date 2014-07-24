@@ -2,12 +2,10 @@ package GUI.panels;
 
 import GUI.GuiController;
 import java.awt.Graphics;
-import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import utility.ImageResizer;
 
@@ -22,15 +20,12 @@ public class StartPanel extends JPanel{
     //constructor
     public StartPanel(){
         //loadBackground image
-        BufferedImage background;
-        File file = null;
-        try {
-            //file = new File("src/assets/images/startScreen/startScreen1.jpg");
-            background = ImageIO.read(StartPanel.class.getResourceAsStream("/assets/images/startScreen/startScreen1.jpg"));
+        try{
+            BufferedImage background = ImageIO.read(StartPanel.class.getResourceAsStream("/assets/images/startScreen/startScreen1.jpg"));
             //ImageIO.read(file);
             //resizeBackground image
             backgroundImage = ImageResizer.getInstance().resizeImage(background, GuiController.getInstance().getWidth(), GuiController.getInstance().getHeight());
-        } catch (Exception ioe) {
+        }catch(IOException ioe){
             ioe.printStackTrace();
         }
     }
