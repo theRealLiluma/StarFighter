@@ -23,7 +23,7 @@ public class StartPanel extends JPanel{
         //loadBackground image
         BufferedImage background;
         try {
-            background = ImageIO.read(new File("assets/images/startScreen/startScreen1.jpg"));
+            background = ImageIO.read(new File("src/assets/images/startScreen/startScreen1.jpg"));
             //resizeBackground image
             backgroundImage = ImageResizer.getInstance().resizeImage(background, GuiController.getInstance().getWidth(), GuiController.getInstance().getHeight());
         } catch (IOException ioe) {
