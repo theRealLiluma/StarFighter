@@ -51,17 +51,18 @@ public class CustomButton extends JComponent implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        JOptionPane.showMessageDialog(null, "test");
+        System.out.println("testing");
+        //JOptionPane.showMessageDialog(null, "test");
     }
 
     @Override
     public void mousePressed(MouseEvent me) {
-        JOptionPane.showMessageDialog(null, "test");
+        //JOptionPane.showMessageDialog(null, "test");
     }
 
     @Override
     public void mouseReleased(MouseEvent me) {
-        JOptionPane.showMessageDialog(null, "test");
+        //JOptionPane.showMessageDialog(null, "test");
     }
 
     @Override
@@ -73,7 +74,7 @@ public class CustomButton extends JComponent implements MouseListener{
 
     @Override
     public void mouseExited(MouseEvent me) {
-        JOptionPane.showMessageDialog(null, "test");
+        //JOptionPane.showMessageDialog(null, "test");
     }
     
 }
