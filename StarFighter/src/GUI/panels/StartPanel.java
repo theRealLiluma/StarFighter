@@ -1,20 +1,22 @@
 package GUI.panels;
 
 import GUI.GuiController;
+import GUI.soundPlayer.References;
+import GUI.soundPlayer.SoundPlayer;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 import utility.ImageResizer;
 
 /**
  *
  * @author nathan
  */
-public class StartPanel extends JPanel{
+public class StartPanel extends CustomPanel{
     //variables
     private BufferedImage backgroundImage;
+    private final String BACKGROUNDMUSIC = "intro.wav";
     
     //constructor
     public StartPanel(){
@@ -24,6 +26,14 @@ public class StartPanel extends JPanel{
         }catch(IOException ioe){
             ioe.printStackTrace();
         }
+    }
+    
+    //music methodes
+    @Override
+    public void startBackgroundMusic(){
+        SoundPlayer musicInstance = SoundPlayer.getInstance();
+        musicInstance.initSound(References.getMUSICLOCATION() + BACKGROUNDMUSIC);
+        musicInstance.startPlaying();
     }
     
     //paint methode

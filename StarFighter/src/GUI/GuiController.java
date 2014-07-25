@@ -1,9 +1,9 @@
 package GUI;
 
+import GUI.panels.CustomPanel;
 import GUI.panels.StartPanel;
 import java.util.HashMap;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 /**
  *
@@ -13,13 +13,13 @@ public class GuiController {
     //variables
     private static GuiController instance;
     private OuterFrame frame;
-    private HashMap<String, JPanel> panels;
-    private JPanel visiblePanel;
+    private HashMap<String, CustomPanel> panels;
+    private CustomPanel visiblePanel;
     
     //constructors
     private GuiController(){
         //init hashMap
-        panels = new HashMap<String, JPanel>();
+        panels = new HashMap<String, CustomPanel>();
     }
     
     //private methodes
@@ -37,8 +37,10 @@ public class GuiController {
     }
     
     private void clearFrame(){
-        if(visiblePanel != null)
+        if(visiblePanel != null){
+            visiblePanel.endBackgroundMusic();
             frame.remove(visiblePanel);
+        }
     }
     
     //public methodes
@@ -50,7 +52,10 @@ public class GuiController {
     //startPanel toevoegen en renderen
     public void toStartPanel(){
         clearFrame();
-        frame.add(panels.get("start"));
+        CustomPanel panel = panels.get("start");
+        frame.add(panel);
+        panel.startBackgroundMusic();
+        visiblePanel = panel;
     }
     
     //get width of frame
