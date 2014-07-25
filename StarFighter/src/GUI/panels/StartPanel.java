@@ -1,6 +1,7 @@
 package GUI.panels;
 
 import GUI.GuiController;
+import GUI.panels.customComponents.CustomButton;
 import GUI.soundPlayer.References;
 import GUI.soundPlayer.SoundPlayer;
 import java.awt.Graphics;
@@ -20,12 +21,21 @@ public class StartPanel extends CustomPanel{
     
     //constructor
     public StartPanel(){
+        initPanel();
+    }
+    
+    //private methodes
+    private void initPanel(){
         //loadBackground image
         try{
             backgroundImage = ImageIO.read(StartPanel.class.getResourceAsStream("/assets/images/startScreen/startScreen1.jpg"));
         }catch(IOException ioe){
             ioe.printStackTrace();
         }
+        
+        //buildLayout startScreen
+        CustomButton testButton = new CustomButton();
+        this.add(testButton);
     }
     
     //music methodes

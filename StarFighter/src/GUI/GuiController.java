@@ -13,7 +13,7 @@ public class GuiController {
     //variables
     private static GuiController instance;
     private OuterFrame frame;
-    private HashMap<String, CustomPanel> panels;
+    private final HashMap<String, CustomPanel> panels;
     private CustomPanel visiblePanel;
     
     //constructors

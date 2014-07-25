@@ -2,9 +2,7 @@ package GUI;
 
 import domein.DomeinController;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,8 +14,10 @@ public class OuterFrame extends JFrame{
     
     //constructor
     public OuterFrame(DomeinController domCntrl){
-        this.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getClassLoader().getResource("assets/images/thumbs/Thumbs.png")));        
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getClassLoader().getResource("assets/images/thumbs/Thumbs.png")));
+        this.setTitle("Star Fighter");
         setController(domCntrl);
+        this.setCursor(CursorSelector.getInstance().getRequestedCursor("default"));
         GuiController.getInstance().setFrame(this);
     }
     
