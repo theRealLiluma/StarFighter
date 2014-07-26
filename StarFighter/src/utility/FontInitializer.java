@@ -1,16 +1,9 @@
 package utility;
 
 import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 
 /**
  *
@@ -23,26 +16,21 @@ public class FontInitializer {
     
     private FontInitializer(){
         try {
-            InputStream fontStream = new BufferedInputStream(new FileInputStream(FONTLOCATION));
+            InputStream fontStream = getClass().getResourceAsStream(FONTLOCATION);
             //File fontFile = new File(FONTLOCATION);
             //create the font to use. Specify the size!
-            //font = Font.createFont(Font.TRUETYPE_FONT, fontStream);
-            /*GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            font = Font.createFont(Font.TRUETYPE_FONT, fontStream);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             //register the font
             ge.registerFont(font);
-        }catch (FontFormatException ffe){
-            ffe.printStackTrace();
-        */}catch (FileNotFoundException fnfe){
+        }catch (Exception fnfe){
             System.err.println("can't open file");
             fnfe.printStackTrace();
-        }catch (IOException ioe) {
-            System.err.println("error reading file");
-            ioe.printStackTrace();
         }
     }
     
     public Font getFont(){
-        return font;
+        return font.deriveFont(18f);
     }
     
     public static FontInitializer getInstance(){

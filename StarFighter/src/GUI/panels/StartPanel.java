@@ -4,10 +4,14 @@ import GUI.GuiController;
 import GUI.panels.customComponents.CustomButton;
 import GUI.soundPlayer.References;
 import GUI.soundPlayer.SoundPlayer;
+import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import utility.FontInitializer;
 import utility.ImageResizer;
 
 /**
@@ -34,11 +38,32 @@ public class StartPanel extends CustomPanel{
         }
         
         //buildLayout startScreen
-        CustomButton testButton = new CustomButton("button1");
-        this.add(testButton);
+        this.setLayout(new BorderLayout());
         
-        CustomButton testButton2 = new CustomButton("button2");
-        this.add(testButton2);
+        //buttonPanel
+        JPanel buttonPanel = new JPanel();
+        //buttonpanel transparent maken
+        buttonPanel.setOpaque(false);
+        
+        //buttons toevoegen en font setten
+        JButton startGame = new JButton("start game");
+        startGame.setFont(FontInitializer.getInstance().getFont());
+        buttonPanel.add(startGame);
+        
+        JButton loadGame = new JButton("load game");
+        loadGame.setFont(FontInitializer.getInstance().getFont());
+        buttonPanel.add(loadGame);
+        
+        JButton options = new JButton("options");
+        options.setFont(FontInitializer.getInstance().getFont());
+        buttonPanel.add(options);
+        
+        JButton exit = new JButton("exit game");
+        exit.setFont(FontInitializer.getInstance().getFont());
+        buttonPanel.add(exit);
+        
+        //panels toevoegen mainPanel
+        this.add(buttonPanel, BorderLayout.PAGE_END);
     }
     
     //music methodes

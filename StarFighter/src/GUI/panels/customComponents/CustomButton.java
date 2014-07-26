@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JComponent;
+import utility.FontInitializer;
 
 /**
  *
@@ -20,7 +21,8 @@ public class CustomButton extends JComponent implements MouseListener{
     
     public CustomButton(String label){
         super();
-        this.setBackground(Color.RED);
+        this.setLabel(label);
+        this.setFont(FontInitializer.getInstance().getFont());
         setSize(DIMENSION);
         enableInputMethods(true);
         addMouseListener(this);

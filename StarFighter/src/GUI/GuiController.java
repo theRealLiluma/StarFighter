@@ -2,6 +2,7 @@ package GUI;
 
 import GUI.panels.CustomPanel;
 import GUI.panels.StartPanel;
+import java.awt.Dimension;
 import java.util.HashMap;
 import javax.swing.JFrame;
 
@@ -15,6 +16,7 @@ public class GuiController {
     private OuterFrame frame;
     private final HashMap<String, CustomPanel> panels;
     private CustomPanel visiblePanel;
+    private final Dimension MINDIMENSION = new Dimension(786,432);
     
     //constructors
     private GuiController(){
@@ -25,7 +27,8 @@ public class GuiController {
     //private methodes
     private void initFrame(){
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(786, 432);
+        frame.setSize(MINDIMENSION);
+        frame.setMinimumSize(MINDIMENSION);
         frame.setLocationRelativeTo(null);
         initPanels();
         frame.setVisible(true);
