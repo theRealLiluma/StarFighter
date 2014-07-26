@@ -34,8 +34,11 @@ public class StartPanel extends CustomPanel{
         }
         
         //buildLayout startScreen
-        CustomButton testButton = new CustomButton();
+        CustomButton testButton = new CustomButton("button1");
         this.add(testButton);
+        
+        CustomButton testButton2 = new CustomButton("button2");
+        this.add(testButton2);
     }
     
     //music methodes
