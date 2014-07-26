@@ -46,6 +46,12 @@ public class GuiController {
         }
     }
     
+    private void clearFrameForOptionsPanel(){
+        if(visiblePanel != null){
+            frame.remove(visiblePanel);
+        }
+    }
+    
     //public methodes
     public void setFrame(OuterFrame frame){
         this.frame = frame;
@@ -59,6 +65,17 @@ public class GuiController {
         frame.add(panel);
         panel.startBackgroundMusic();
         visiblePanel = panel;
+        repaintFrame();
+    }
+    
+    //optionpanel renderen
+    public void toOptions(){
+        clearFrameForOptionsPanel();
+        repaintFrame();
+    }
+    
+    private void repaintFrame(){
+        frame.repaint();
     }
     
     //get width of frame

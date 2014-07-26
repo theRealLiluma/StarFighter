@@ -1,15 +1,18 @@
 package GUI.panels;
 
 import GUI.GuiController;
-import GUI.panels.customComponents.CustomButton;
 import GUI.soundPlayer.References;
 import GUI.soundPlayer.SoundPlayer;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import utility.FontInitializer;
 import utility.ImageResizer;
@@ -48,18 +51,42 @@ public class StartPanel extends CustomPanel{
         //buttons toevoegen en font setten
         JButton startGame = new JButton("start game");
         startGame.setFont(FontInitializer.getInstance().getFont());
+        startGame.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //laden van een nieuw game.
+            }  
+        });
         buttonPanel.add(startGame);
         
         JButton loadGame = new JButton("load game");
         loadGame.setFont(FontInitializer.getInstance().getFont());
+        loadGame.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                //inladen van vorig spel of meerdere save files ==> moet nog bekeken worden
+            }
+        });
         buttonPanel.add(loadGame);
         
         JButton options = new JButton("options");
         options.setFont(FontInitializer.getInstance().getFont());
+        options.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                GuiController.getInstance().toOptions();
+            }
+        });
         buttonPanel.add(options);
         
         JButton exit = new JButton("exit game");
         exit.setFont(FontInitializer.getInstance().getFont());
+        exit.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                System.exit(0);
+            }
+        });
         buttonPanel.add(exit);
         
         //panels toevoegen mainPanel
