@@ -4,6 +4,7 @@ import GUI.panels.CustomPanel;
 import GUI.panels.OptionPanel;
 import GUI.panels.StartPanel;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.util.HashMap;
 import javax.swing.JFrame;
 
@@ -46,7 +47,7 @@ public class GuiController {
             visiblePanel.endBackgroundMusic();
             frame.remove(visiblePanel);
         }
-        frame.repaint();
+        //frame.repaint();
     }
     
     private void clearFrameForOptionsPanel(){
@@ -68,7 +69,8 @@ public class GuiController {
         visiblePanel = panels.get("start");
         frame.add(visiblePanel);
         visiblePanel.startBackgroundMusic();
-        repaintFrame();
+        frame.pack();
+        //repaintFrame();
     }
     
     //optionpanel renderen
@@ -76,7 +78,8 @@ public class GuiController {
         clearFrameForOptionsPanel();
         visiblePanel = panels.get("options");
         frame.add(visiblePanel);
-        repaintFrame();
+        frame.pack();
+        //repaintFrame();
     }
     
     private void repaintFrame(){

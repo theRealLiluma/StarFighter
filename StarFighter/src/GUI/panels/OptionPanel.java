@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import utility.ImageResizer;
 
 /**
@@ -32,6 +33,7 @@ public class OptionPanel extends CustomPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        System.out.println("optionpanel beeing repainted");
         g.drawImage(ImageResizer.getInstance().resizeImage(backgroundImage, GuiController.getInstance().getWidth(), GuiController.getInstance().getHeight()), 0, 0, null);
     }
 }
