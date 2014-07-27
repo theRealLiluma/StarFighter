@@ -23,6 +23,7 @@ public class OuterFrame extends JFrame{
         this.setCursor(CursorSelector.getInstance().getRequestedCursor("default"));
         //setten van font
         this.setFont(FontInitializer.getInstance().getFont());
+        
         GuiController.getInstance().setFrame(this);
     }
     

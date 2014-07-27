@@ -4,6 +4,9 @@ import GUI.panels.CustomPanel;
 import GUI.panels.OptionPanel;
 import GUI.panels.StartPanel;
 import java.awt.Dimension;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.util.HashMap;
 import javax.swing.JFrame;
 
@@ -17,6 +20,7 @@ public class GuiController {
     private OuterFrame frame;
     private final HashMap<String, CustomPanel> panels;
     private CustomPanel visiblePanel;
+    private Dimension currentDimension;
     private final Dimension MINDIMENSION = new Dimension(786,432);
     
     //constructors
@@ -30,7 +34,9 @@ public class GuiController {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(MINDIMENSION);
         frame.setMinimumSize(MINDIMENSION);
+        currentDimension = new Dimension(MINDIMENSION.width, MINDIMENSION.height);
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         initPanels();
         frame.setVisible(true);
     }
@@ -66,7 +72,6 @@ public class GuiController {
         if(!musicPlaying){
             visiblePanel.startBackgroundMusic();
         }
-        
         frame.pack();
     }
     
