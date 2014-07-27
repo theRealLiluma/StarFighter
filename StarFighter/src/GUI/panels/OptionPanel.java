@@ -40,6 +40,7 @@ public class OptionPanel extends CustomPanel{
         exitPanel.setOpaque(false);
         
         JButton toMainMenu = new JButton("To main menu");
+        toMainMenu.setFocusable(false);
         toMainMenu.setFont(FontInitializer.getInstance().getFont());
         toMainMenu.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae) {

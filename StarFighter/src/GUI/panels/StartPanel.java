@@ -50,6 +50,7 @@ public class StartPanel extends CustomPanel{
         
         //buttons toevoegen en font setten
         JButton startGame = new JButton("start game");
+        startGame.setFocusable(false);
         startGame.setFont(FontInitializer.getInstance().getFont());
         startGame.addActionListener(new ActionListener(){
             @Override
@@ -60,6 +61,7 @@ public class StartPanel extends CustomPanel{
         buttonPanel.add(startGame);
         
         JButton loadGame = new JButton("load game");
+        loadGame.setFocusable(false);
         loadGame.setFont(FontInitializer.getInstance().getFont());
         loadGame.addActionListener(new ActionListener(){
             @Override
@@ -70,6 +72,7 @@ public class StartPanel extends CustomPanel{
         buttonPanel.add(loadGame);
         
         JButton options = new JButton("options");
+        options.setFocusable(false);
         options.setFont(FontInitializer.getInstance().getFont());
         options.addActionListener(new ActionListener(){
             @Override
@@ -80,6 +83,7 @@ public class StartPanel extends CustomPanel{
         buttonPanel.add(options);
         
         JButton exit = new JButton("exit game");
+        exit.setFocusable(false);
         exit.setFont(FontInitializer.getInstance().getFont());
         exit.addActionListener(new ActionListener(){
             @Override
