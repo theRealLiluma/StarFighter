@@ -59,8 +59,8 @@ public class GuiController {
     }
     
     //startPanel toevoegen en renderen
-    public void toStartPanel(boolean musicPlaying){
-        clearFrame(false);
+    public void toStartPanel(boolean musicPlaying, boolean stopCurrentPlayingMusic){
+        clearFrame(stopCurrentPlayingMusic);
         visiblePanel = panels.get("start");
         frame.add(visiblePanel);
         if(!musicPlaying){

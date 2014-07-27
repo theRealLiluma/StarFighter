@@ -43,7 +43,7 @@ public class OptionPanel extends CustomPanel{
         toMainMenu.setFont(FontInitializer.getInstance().getFont());
         toMainMenu.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae) {
-                GuiController.getInstance().toStartPanel(SoundPlayer.getInstance().isPlaying());
+                GuiController.getInstance().toStartPanel(SoundPlayer.getInstance().isPlaying(), false);
             }
         });
         

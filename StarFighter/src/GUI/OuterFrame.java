@@ -28,7 +28,7 @@ public class OuterFrame extends JFrame{
     
     //public methodes
     public void toStartPanel(){
-        GuiController.getInstance().toStartPanel(SoundPlayer.getInstance().isPlaying());
+        GuiController.getInstance().toStartPanel(SoundPlayer.getInstance().isPlaying(), true);
     }
     
     //private settermethodes
