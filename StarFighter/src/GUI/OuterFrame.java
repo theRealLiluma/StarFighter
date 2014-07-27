@@ -1,5 +1,6 @@
 package GUI;
 
+import GUI.soundPlayer.SoundPlayer;
 import domein.DomeinController;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
@@ -27,7 +28,7 @@ public class OuterFrame extends JFrame{
     
     //public methodes
     public void toStartPanel(){
-        GuiController.getInstance().toStartPanel();
+        GuiController.getInstance().toStartPanel(SoundPlayer.getInstance().isPlaying());
     }
     
     //private settermethodes

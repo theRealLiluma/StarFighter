@@ -104,7 +104,7 @@ public class StartPanel extends CustomPanel{
     //paint methode
     @Override
     public void paintComponent(Graphics g){
-        super.paintComponents(g);
+        super.paintComponent(g);
         g.drawImage(ImageResizer.getInstance().resizeImage(backgroundImage, GuiController.getInstance().getWidth(), GuiController.getInstance().getHeight()), 0, 0, null);
     }
 }

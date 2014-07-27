@@ -68,6 +68,7 @@ public class SoundPlayer {
     }
     
     public void startPlaying(){
+        playing = true;
     	clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
     
