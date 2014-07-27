@@ -1,6 +1,7 @@
 package GUI;
 
 import GUI.panels.CustomPanel;
+import GUI.panels.OptionPanel;
 import GUI.panels.StartPanel;
 import java.awt.Dimension;
 import java.util.HashMap;
@@ -37,6 +38,7 @@ public class GuiController {
     private void initPanels(){
         //init de mogelijke frames
         panels.put("start", new StartPanel());
+        panels.put("options", new OptionPanel());
     }
     
     private void clearFrame(){
@@ -44,12 +46,14 @@ public class GuiController {
             visiblePanel.endBackgroundMusic();
             frame.remove(visiblePanel);
         }
+        frame.repaint();
     }
     
     private void clearFrameForOptionsPanel(){
         if(visiblePanel != null){
             frame.remove(visiblePanel);
         }
+        frame.repaint();
     }
     
     //public methodes
@@ -61,16 +65,17 @@ public class GuiController {
     //startPanel toevoegen en renderen
     public void toStartPanel(){
         clearFrame();
-        CustomPanel panel = panels.get("start");
-        frame.add(panel);
-        panel.startBackgroundMusic();
-        visiblePanel = panel;
+        visiblePanel = panels.get("start");
+        frame.add(visiblePanel);
+        visiblePanel.startBackgroundMusic();
         repaintFrame();
     }
     
     //optionpanel renderen
     public void toOptions(){
         clearFrameForOptionsPanel();
+        visiblePanel = panels.get("options");
+        frame.add(visiblePanel);
         repaintFrame();
     }
     
