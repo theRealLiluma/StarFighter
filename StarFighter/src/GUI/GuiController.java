@@ -54,7 +54,6 @@ public class GuiController {
         if(visiblePanel != null){
             frame.remove(visiblePanel);
         }
-        frame.repaint();
     }
     
     //public methodes
@@ -70,7 +69,6 @@ public class GuiController {
         frame.add(visiblePanel);
         visiblePanel.startBackgroundMusic();
         frame.pack();
-        //repaintFrame();
     }
     
     //optionpanel renderen
@@ -79,11 +77,6 @@ public class GuiController {
         visiblePanel = panels.get("options");
         frame.add(visiblePanel);
         frame.pack();
-        //repaintFrame();
-    }
-    
-    private void repaintFrame(){
-        frame.repaint();
     }
     
     //get width of frame
