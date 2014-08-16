@@ -45,8 +45,12 @@ public class SoundPlayer {
     }
     
     public void stopPlaying(){
-    	clip.stop();
-        playing = false;
+        try{
+            clip.stop();
+            playing = false;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     
     public void resetPlayer(){
@@ -68,8 +72,12 @@ public class SoundPlayer {
     }
     
     public void startPlaying(){
-        playing = true;
-    	clip.loop(Clip.LOOP_CONTINUOUSLY);
+        try{
+            playing = true;
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     
     public void setSound(int soundLevel){

@@ -3,18 +3,13 @@ package configuration;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,11 +18,13 @@ import javax.swing.JOptionPane;
 public class ConfigurationLoaderWindows implements Configuration{
     private File configFile;
     private String locationFolder;
+    private ConfigurationItems configurationItems;
     private final String FOLDERNAME = "starfighter";
     private final String FILENAME = "starfighterconfig";
     private final String DEFAULTFILE = "/assets/config/defaultConfig.conf";
     
     public ConfigurationLoaderWindows(){
+        configurationItems = new ConfigurationItems();
         locationFolder = System.getenv("APPDATA");
         Path folderPath = Paths.get(locationFolder + "/" + FOLDERNAME);
         if(!Files.exists(folderPath)){
@@ -38,6 +35,7 @@ public class ConfigurationLoaderWindows implements Configuration{
         }
         //inladen van configurationFile
         loadConfigFile();
+        initConfiguration();
     }
     
     private void loadConfigFile(){
@@ -69,7 +67,34 @@ public class ConfigurationLoaderWindows implements Configuration{
     
     @Override
     public void initConfiguration() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //read the file
+        if(configFile != null){
+            try{
+                BufferedReader reader = new BufferedReader(new FileReader(configFile));
+                boolean readingData = false;
+                String key = "";
+                String line = reader.readLine();
+                
+                while(line != null){
+                    if(line.contains("}")){
+                        readingData = false;
+                    }
+                    if(readingData){
+                        if(key != null || !key.isEmpty()){
+                            configurationItems.putValue(key, line);
+                        }
+                    }
+                    if(line.contains("{")){
+                        readingData = true;
+                        key = line.subSequence(0, line.indexOf("{")).toString().trim();
+                        configurationItems.addKey(key);
+                    }
+                    line = reader.readLine();
+                }
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
