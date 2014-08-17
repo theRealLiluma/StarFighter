@@ -3,13 +3,16 @@ package GUI.panels;
 import GUI.GuiController;
 import GUI.soundPlayer.SoundPlayer;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import utility.FontInitializer;
 import utility.ImageResizer;
@@ -35,6 +38,16 @@ public class OptionPanel extends CustomPanel{
         //buildLayout startScreen
         this.setLayout(new BorderLayout());
         
+        //center panel ==> panel met alle options op
+        JPanel centerPanel = new JPanel();
+        centerPanel.setOpaque(false);
+        //eerste getal aantal rijen, tweede getal aantal kolommen.
+        centerPanel.setLayout(new GridLayout(1, 2));
+        JLabel resolutionsLabel = new JLabel("resolutions");
+        resolutionsLabel.setFont(FontInitializer.getInstance().getFont());
+        resolutionsLabel.setBackground(new Color(0F,0F,0F,1F));
+        centerPanel.add(resolutionsLabel);
+        
         //panel voor exit button
         JPanel exitPanel = new JPanel();
         exitPanel.setOpaque(false);
@@ -50,6 +63,8 @@ public class OptionPanel extends CustomPanel{
         
         exitPanel.add(toMainMenu);
         
+        //toevoegen van panels aan frame
+        this.add(centerPanel, BorderLayout.CENTER);
         this.add(exitPanel, BorderLayout.PAGE_END);
     }
     
