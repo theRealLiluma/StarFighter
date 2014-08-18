@@ -2,6 +2,7 @@ package GUI.panels;
 
 import GUI.GuiController;
 import GUI.soundPlayer.SoundPlayer;
+import configuration.ConfigurationHandler;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -12,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import utility.FontInitializer;
@@ -43,10 +45,16 @@ public class OptionPanel extends CustomPanel{
         centerPanel.setOpaque(false);
         //eerste getal aantal rijen, tweede getal aantal kolommen.
         centerPanel.setLayout(new GridLayout(1, 2));
+        //label voor resolutions
         JLabel resolutionsLabel = new JLabel("resolutions");
+        resolutionsLabel.setForeground(Color.WHITE);
         resolutionsLabel.setFont(FontInitializer.getInstance().getFont());
-        resolutionsLabel.setBackground(new Color(0F,0F,0F,1F));
+        
+        //resolutions comboBox
+        JComboBox resolutions = new JComboBox(ConfigurationHandler.getInstance().getResolutions());
+        
         centerPanel.add(resolutionsLabel);
+        centerPanel.add(resolutions);
         
         //panel voor exit button
         JPanel exitPanel = new JPanel();

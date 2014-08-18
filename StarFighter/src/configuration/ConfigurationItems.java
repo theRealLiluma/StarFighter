@@ -6,6 +6,7 @@ import java.util.List;
 
 public class ConfigurationItems {
     private HashMap<String, List> configs;
+    private final String RESOLUTION = "resolutions";
     
     public ConfigurationItems(){
         configs = new HashMap<String, List>();
@@ -21,7 +22,7 @@ public class ConfigurationItems {
     
     public void putValue(String key, String values){
         switch(key){
-            case "resolutions": 
+            case RESOLUTION: 
                 addResolution(key,values);
                 break;
             default: 
@@ -38,5 +39,9 @@ public class ConfigurationItems {
         
         List resolutions = configs.get(key);
         resolutions.add(res);
+    }
+    
+    public List<Resolution> getResolutions(){
+        return configs.get(RESOLUTION);
     }
 }

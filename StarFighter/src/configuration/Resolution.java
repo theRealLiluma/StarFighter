@@ -26,4 +26,12 @@ public class Resolution {
             this.height = 0;
         }
     }
+    
+    public int getHeight(){
+        return height;
+    }
+    
+    public int getWidth(){
+        return width;
+    }
 }

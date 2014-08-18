@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 /**
  *
@@ -107,4 +108,7 @@ public class ConfigurationLoaderWindows implements Configuration{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public List<Resolution> getResolutions(){
+        return configurationItems.getResolutions();
+    }
 }
