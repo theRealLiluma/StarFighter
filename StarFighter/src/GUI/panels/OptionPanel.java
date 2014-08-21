@@ -5,6 +5,7 @@ import GUI.soundPlayer.SoundPlayer;
 import configuration.ConfigurationHandler;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -12,9 +13,12 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import utility.FontInitializer;
 import utility.ImageResizer;
@@ -52,6 +56,16 @@ public class OptionPanel extends CustomPanel{
         
         //resolutions comboBox
         JComboBox resolutions = new JComboBox(ConfigurationHandler.getInstance().getResolutions());
+        resolutions.setFont(FontInitializer.getInstance().getFont());
+        resolutions.setForeground(Color.WHITE);
+        resolutions.setOpaque(false);
+        resolutions.setRenderer(new DefaultListCellRenderer(){
+            @Override
+            public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                JComponent result = (JComponent)super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                result.setOpaque(false);
+                return result;
+        }});
         
         centerPanel.add(resolutionsLabel);
         centerPanel.add(resolutions);
