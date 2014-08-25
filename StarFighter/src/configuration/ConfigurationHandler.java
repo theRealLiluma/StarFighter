@@ -34,6 +34,12 @@ public class ConfigurationHandler {
         return config.getResolution();
     }
     
+    public String getResolutionText(){
+        Resolution res = getResolution();
+        String returnValue = String.format("%d  --  %d", res.getWidth(), res.getHeight());
+        return returnValue;
+    }
+    
     public static ConfigurationHandler getInstance(){
         if(instance == null)
             instance = new ConfigurationHandler();
