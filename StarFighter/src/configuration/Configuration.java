@@ -11,4 +11,5 @@ public interface Configuration {
     public boolean addeptConfigValue(String key, String value);
     public boolean saveConfigFile();
     public List<Resolution> getResolutions();
+    public Resolution getResolution();
 }

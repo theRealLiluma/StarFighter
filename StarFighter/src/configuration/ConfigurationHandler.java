@@ -1,12 +1,7 @@
 package configuration;
 
-import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author nathan
- */
 public class ConfigurationHandler {
     private static ConfigurationHandler instance;
     private Configuration config;
@@ -24,7 +19,7 @@ public class ConfigurationHandler {
         
         for(int i = 0; i < resolutions.size(); i++){
             Resolution r = resolutions.get(i);
-            resolution = String.format("%d\t%d", r.getWidth(), r.getHeight());
+            resolution = String.format("%d * %d", r.getWidth(), r.getHeight());
             resolutionsList[i] = resolution;
         }
         
@@ -33,6 +28,10 @@ public class ConfigurationHandler {
     
     public void initConfig(){
         
+    }
+    
+    public Resolution getResolution(){
+        return config.getResolution();
     }
     
     public static ConfigurationHandler getInstance(){

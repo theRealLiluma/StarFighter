@@ -6,7 +6,9 @@ import java.util.List;
 
 public class ConfigurationItems {
     private HashMap<String, List> configs;
-    private final String RESOLUTION = "resolutions";
+    private final String RESOLUTIONS = "resolutions";
+    private final String SETTINGS = "settings";
+    private final String RESOLUTION = "resolution";
     
     public ConfigurationItems(){
         configs = new HashMap<String, List>();
@@ -22,8 +24,11 @@ public class ConfigurationItems {
     
     public void putValue(String key, String values){
         switch(key){
-            case RESOLUTION: 
+            case RESOLUTIONS: 
                 addResolution(key,values);
+                break;
+            case SETTINGS:
+                addSetting(key, values);
                 break;
             default: 
                 break;
@@ -39,6 +44,42 @@ public class ConfigurationItems {
         
         List resolutions = configs.get(key);
         resolutions.add(res);
+    }
+    
+    private void addSetting(String key, String values){
+        String[] settingList = values.split(":");
+        String settingKey = settingList[0];
+        String settingValue = settingList[1];
+        Setting set;
+        Resolution res;
+        
+        /* verwerken van value aan de hand van settingkey */
+        switch(settingKey){
+            case RESOLUTION:
+                String[] sizes = settingValue.split("X");
+                int width = Integer.parseInt(sizes[0]);
+                int height = Integer.parseInt(sizes[1]);
+                res = new Resolution (width, height);
+                set = new Setting<Resolution>(settingKey, res);
+                /* setting toevoegen aan list */
+                List settings = configs.get(key);
+                settings.add(set);
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    public Setting getSetting(String settingkey){
+        List<Setting> settings = configs.get(SETTINGS);
+        Setting set = null;
+        for(int i = 0; i < settings.size(); i++){
+            set = settings.get(i);
+            if(set.getKey().equals(settingkey))
+                break;
+        }
+        return set;
     }
     
     public List<Resolution> getResolutions(){

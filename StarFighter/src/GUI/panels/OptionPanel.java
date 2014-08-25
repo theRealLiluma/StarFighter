@@ -6,6 +6,7 @@ import configuration.ConfigurationHandler;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -20,6 +21,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicComboBoxUI;
 import utility.FontInitializer;
 import utility.ImageResizer;
 
@@ -43,36 +45,13 @@ public class OptionPanel extends CustomPanel{
         }
         //buildLayout startScreen
         this.setLayout(new BorderLayout());
-        
-        //center panel ==> panel met alle options op
-        JPanel centerPanel = new JPanel();
-        centerPanel.setOpaque(false);
-        //eerste getal aantal rijen, tweede getal aantal kolommen.
-        centerPanel.setLayout(new GridLayout(1, 2));
-        //label voor resolutions
-        JLabel resolutionsLabel = new JLabel("resolutions");
-        resolutionsLabel.setForeground(Color.WHITE);
-        resolutionsLabel.setFont(FontInitializer.getInstance().getFont());
-        
-        //resolutions comboBox
-        JComboBox resolutions = new JComboBox(ConfigurationHandler.getInstance().getResolutions());
-        resolutions.setFont(FontInitializer.getInstance().getFont());
-        resolutions.setForeground(Color.WHITE);
-        resolutions.setOpaque(false);
-        resolutions.setRenderer(new DefaultListCellRenderer(){
-            @Override
-            public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-                JComponent result = (JComponent)super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                result.setOpaque(false);
-                return result;
-        }});
-        
-        centerPanel.add(resolutionsLabel);
-        centerPanel.add(resolutions);
-        
+                
         //panel voor exit button
         JPanel exitPanel = new JPanel();
         exitPanel.setOpaque(false);
+        
+        JPanel resolutionPanel = new ResolutionPanel();
+        resolutionPanel.setOpaque(false);
         
         JButton toMainMenu = new JButton("To main menu");
         toMainMenu.setFocusable(false);
@@ -86,7 +65,7 @@ public class OptionPanel extends CustomPanel{
         exitPanel.add(toMainMenu);
         
         //toevoegen van panels aan frame
-        this.add(centerPanel, BorderLayout.CENTER);
+        this.add(resolutionPanel, BorderLayout.CENTER);
         this.add(exitPanel, BorderLayout.PAGE_END);
     }
     

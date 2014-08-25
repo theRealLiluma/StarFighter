@@ -17,12 +17,17 @@ import java.util.List;
  * @author nathan
  */
 public class ConfigurationLoaderWindows implements Configuration{
+    /* session variabels */
     private File configFile;
     private String locationFolder;
     private ConfigurationItems configurationItems;
+    private Resolution selectedResolution;
+    
+    /* final variables */
     private final String FOLDERNAME = "starfighter";
     private final String FILENAME = "starfighterconfig";
     private final String DEFAULTFILE = "/assets/config/defaultConfig.conf";
+    private final String RESOLUTION = "resolution";
     
     public ConfigurationLoaderWindows(){
         configurationItems = new ConfigurationItems();
@@ -96,6 +101,19 @@ public class ConfigurationLoaderWindows implements Configuration{
                 e.printStackTrace();
             }
         }
+        
+        //set the settings of the game
+        setInitialSettings();
+    }
+    
+    private void setInitialSettings(){
+        try{
+            Setting<Resolution> set = configurationItems.getSetting(RESOLUTION);
+            selectedResolution = set.getValue();
+            System.out.printf("i have found a resolution with width: %d and height: %d\n", selectedResolution.getWidth(), selectedResolution.getHeight());
+        }catch(Exception e){
+            System.err.println("something went wrong. :(\nI'm sorry... :p here have a cookie");
+        }
     }
 
     @Override
@@ -108,7 +126,13 @@ public class ConfigurationLoaderWindows implements Configuration{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    @Override
     public List<Resolution> getResolutions(){
         return configurationItems.getResolutions();
+    }
+    
+    @Override
+    public Resolution getResolution(){
+        return selectedResolution;
     }
 }

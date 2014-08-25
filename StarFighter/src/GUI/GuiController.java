@@ -3,6 +3,8 @@ package GUI;
 import GUI.panels.CustomPanel;
 import GUI.panels.OptionPanel;
 import GUI.panels.StartPanel;
+import configuration.ConfigurationHandler;
+import configuration.Resolution;
 import java.awt.Dimension;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -21,20 +23,21 @@ public class GuiController {
     private final HashMap<String, CustomPanel> panels;
     private CustomPanel visiblePanel;
     private Dimension currentDimension;
-    private final Dimension MINDIMENSION = new Dimension(786,432);
     
     //constructors
     private GuiController(){
         //init hashMap
         panels = new HashMap<String, CustomPanel>();
+        Resolution res = ConfigurationHandler.getInstance().getResolution();
+        currentDimension = new Dimension(res.getWidth(), res.getHeight());
     }
     
     //private methodes
     private void initFrame(){
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(MINDIMENSION);
-        frame.setMinimumSize(MINDIMENSION);
-        currentDimension = new Dimension(MINDIMENSION.width, MINDIMENSION.height);
+        frame.setSize(currentDimension);
+        frame.setMinimumSize(currentDimension);
+        currentDimension = new Dimension(currentDimension.width, currentDimension.height);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         initPanels();
