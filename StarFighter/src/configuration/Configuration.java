@@ -12,4 +12,6 @@ public interface Configuration {
     public boolean saveConfigFile();
     public List<Resolution> getResolutions();
     public Resolution getResolution();
+    public void toLowerResolution();
+    public void toHigherResolution();
 }

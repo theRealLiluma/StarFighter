@@ -25,4 +25,5 @@ public class Setting<E>{
     public String getKey(){
         return key;
     }
+
 }

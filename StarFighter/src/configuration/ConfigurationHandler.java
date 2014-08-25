@@ -40,6 +40,14 @@ public class ConfigurationHandler {
         return returnValue;
     }
     
+    public void toLowerResolution(){
+        config.toLowerResolution();
+    }
+    
+    public void toHigherResolution(){
+        config.toHigherResolution();
+    }
+    
     public static ConfigurationHandler getInstance(){
         if(instance == null)
             instance = new ConfigurationHandler();

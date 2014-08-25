@@ -135,4 +135,14 @@ public class ConfigurationLoaderWindows implements Configuration{
     public Resolution getResolution(){
         return selectedResolution;
     }
+
+    @Override
+    public void toLowerResolution() {
+        selectedResolution = configurationItems.getLowerResolution(selectedResolution);
+    }
+
+    @Override
+    public void toHigherResolution() {
+        selectedResolution = configurationItems.getHigherResolution(selectedResolution);
+    }
 }

@@ -85,4 +85,36 @@ public class ConfigurationItems {
     public List<Resolution> getResolutions(){
         return configs.get(RESOLUTION);
     }
+    
+    public Resolution getLowerResolution(Resolution current){
+        List<Resolution> resolutions = configs.get(RESOLUTIONS);
+        //laagste element ophalen
+        Resolution res = resolutions.get(0);
+        if(res.getWidth() == current.getWidth() && res.getHeight() == current.getHeight()){
+            return resolutions.get(resolutions.size() - 1);
+        }else{
+            for(int i = resolutions.size() -1; i >= 0; i--){
+                res = resolutions.get(i);
+                if(res.getWidth() < current.getWidth() && res.getHeight() < current.getHeight())
+                    return res;
+            }
+        }
+        return null;
+    }
+    
+    public Resolution getHigherResolution(Resolution current){
+        List<Resolution> resolutions = configs.get(RESOLUTIONS);   
+        Resolution res = resolutions.get(resolutions.size() -1);
+        
+        if(res.getWidth() == current.getWidth() && res.getHeight() == current.getHeight()){
+            return resolutions.get(0);
+        }else{
+            for(int i = 1; i < resolutions.size(); i++){
+                res = resolutions.get(i);
+                if(res.getWidth() > current.getWidth() && res.getHeight() > current.getHeight())
+                    return res;
+            }
+        }
+        return null;
+    }
 }

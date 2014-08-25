@@ -86,6 +86,16 @@ public class GuiController {
         frame.pack();
     }
     
+    //framesize updaten
+    public void updateClientSize(){
+        Resolution res = ConfigurationHandler.getInstance().getResolution();
+        currentDimension = new Dimension(res.getWidth(), res.getHeight());
+        frame.setSize(currentDimension);
+        frame.setMinimumSize(currentDimension);
+        frame.setLocationRelativeTo(null);
+        frame.pack();
+    }
+    
     //get width of frame
     public int getWidth(){
         return frame.getWidth();
