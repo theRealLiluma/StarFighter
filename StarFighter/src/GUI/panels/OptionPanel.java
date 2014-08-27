@@ -2,26 +2,15 @@ package GUI.panels;
 
 import GUI.GuiController;
 import GUI.soundPlayer.SoundPlayer;
-import configuration.ConfigurationHandler;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.plaf.basic.BasicComboBoxUI;
 import utility.FontInitializer;
 import utility.ImageResizer;
 

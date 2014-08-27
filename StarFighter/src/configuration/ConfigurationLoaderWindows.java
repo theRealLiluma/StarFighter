@@ -117,12 +117,7 @@ public class ConfigurationLoaderWindows implements Configuration{
     }
 
     @Override
-    public boolean addeptConfigValue(String key, String value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean saveConfigFile() {
+    public void saveConfigFile() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -139,10 +134,12 @@ public class ConfigurationLoaderWindows implements Configuration{
     @Override
     public void toLowerResolution() {
         selectedResolution = configurationItems.getLowerResolution(selectedResolution);
+        //saveConfigFile();
     }
 
     @Override
     public void toHigherResolution() {
         selectedResolution = configurationItems.getHigherResolution(selectedResolution);
+        //saveConfigFile();
     }
 }
