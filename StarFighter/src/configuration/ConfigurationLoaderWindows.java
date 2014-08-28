@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -48,7 +49,26 @@ public class ConfigurationLoaderWindows implements Configuration{
         //controleren of er een configfile aanwezig is
         Path configFilePath = Paths.get(locationFolder + "/" + FOLDERNAME + "/" + FILENAME);
         if(!Files.exists(configFilePath)){
-            //default bestand kopieren en inlezen
+            copyDefaultConfigFile();
+        }else {
+            //controleren van last update date van default config met base config
+            try{
+                Date configFileDate = new Date(configFilePath.toFile().lastModified());
+                File defaultFile = new File(getClass().getResource(DEFAULTFILE).toURI());
+                Date defaultDate = new Date(defaultFile.lastModified());
+                if(defaultDate.after(configFileDate)){
+                    copyDefaultConfigFile();
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        //bestaand bestand inlezen
+        configFile = new File(configFilePath.toString());
+    }
+    
+    private void copyDefaultConfigFile(){
+        //default bestand kopieren en inlezen
             try{
                 BufferedReader inputReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(DEFAULTFILE)));
                 FileWriter writer = new FileWriter(Paths.get(locationFolder + "/" + FOLDERNAME + "/" + FILENAME).toString());
@@ -65,10 +85,6 @@ public class ConfigurationLoaderWindows implements Configuration{
             }catch(IOException ioe){
                 System.err.println("inputexception");
             }
-        }
-        
-        //bestaand bestand inlezen
-        configFile = new File(configFilePath.toString());
     }
     
     @Override
