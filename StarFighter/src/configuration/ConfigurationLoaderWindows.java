@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -20,7 +21,7 @@ import java.util.List;
 public class ConfigurationLoaderWindows implements Configuration{
     /* session variabels */
     private File configFile;
-    private String locationFolder;
+    private final String locationFolder;
     private ConfigurationItems configurationItems;
     private Resolution selectedResolution;
     
@@ -59,7 +60,7 @@ public class ConfigurationLoaderWindows implements Configuration{
                 if(defaultDate.after(configFileDate)){
                     copyDefaultConfigFile();
                 }
-            }catch (Exception e){
+            }catch (URISyntaxException e){
                 e.printStackTrace();
             }
         }
