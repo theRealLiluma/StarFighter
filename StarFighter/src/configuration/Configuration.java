@@ -9,4 +9,5 @@ public interface Configuration {
     public Resolution getResolution();
     public void toLowerResolution();
     public void toHigherResolution();
+    public void editBasicResolution();
 }

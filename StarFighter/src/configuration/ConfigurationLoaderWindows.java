@@ -110,7 +110,7 @@ public class ConfigurationLoaderWindows implements Configuration{
         try{
             Setting<Resolution> set = configurationItems.getSetting(RESOLUTION);
             selectedResolution = set.getValue();
-            System.out.printf("i have found a resolution with width: %d and height: %d\n", selectedResolution.getWidth(), selectedResolution.getHeight());
+            //System.out.printf("i have found a resolution with width: %d and height: %d\n", selectedResolution.getWidth(), selectedResolution.getHeight());
         }catch(Exception e){
             System.err.println("something went wrong. :(\nI'm sorry... :p here have a cookie");
         }
@@ -118,7 +118,15 @@ public class ConfigurationLoaderWindows implements Configuration{
 
     @Override
     public void saveConfigFile() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String content = configurationItems.getFileContent();
+        try{
+            FileWriter fw = new FileWriter(configFile.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(content);
+            bw.close();
+        }catch(IOException ioe){
+            ioe.printStackTrace();
+        }
     }
     
     @Override
@@ -134,12 +142,19 @@ public class ConfigurationLoaderWindows implements Configuration{
     @Override
     public void toLowerResolution() {
         selectedResolution = configurationItems.getLowerResolution(selectedResolution);
-        //saveConfigFile();
+        editBasicResolution();
+        saveConfigFile();
     }
 
     @Override
     public void toHigherResolution() {
         selectedResolution = configurationItems.getHigherResolution(selectedResolution);
-        //saveConfigFile();
+        editBasicResolution();
+        saveConfigFile();
+    }
+
+    @Override
+    public void editBasicResolution() {
+        configurationItems.editSetting("settings", "resolution", selectedResolution);
     }
 }

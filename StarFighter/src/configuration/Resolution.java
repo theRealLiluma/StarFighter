@@ -34,4 +34,14 @@ public class Resolution {
     public int getWidth(){
         return width;
     }
+    
+    @Override
+    public String toString(){
+        StringBuilder builder = new StringBuilder();
+        builder.append(width);
+        builder.append("X");
+        builder.append(height);
+        builder.append("\n");
+        return builder.toString();
+    }
 }

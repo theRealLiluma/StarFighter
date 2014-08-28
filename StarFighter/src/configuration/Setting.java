@@ -25,5 +25,18 @@ public class Setting<E>{
     public String getKey(){
         return key;
     }
-
+    
+    public void editResolution(E value){
+        setValue(value);
+    }
+    
+    @Override
+    public String toString(){
+        StringBuilder builder = new StringBuilder();
+        builder.append(key);
+        builder.append(":");
+        builder.append(value.toString());
+        //builder.append("\n");
+        return builder.toString();
+    }
 }

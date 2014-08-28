@@ -3,6 +3,7 @@ package configuration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class ConfigurationItems {
     private HashMap<String, List> configs;
@@ -116,5 +117,31 @@ public class ConfigurationItems {
             }
         }
         return null;
+    }
+    
+    public void editSetting(String key, String subKey, Resolution value){
+        //settings op halen
+        List<Setting> settings = configs.get(key);
+        for(Setting set : settings){
+            if(set.getKey().equals(subKey)){
+                set.editResolution(value);
+                break;
+            }
+        }
+    }
+    
+    public String getFileContent(){
+        StringBuilder builder = new StringBuilder();
+        
+        Set<String> keys = configs.keySet();
+        for(String key : keys){
+            builder.append(key + " {\n");
+            List values = configs.get(key);
+            for(Object value : values){
+                builder.append(value.toString());
+            }
+            builder.append("}\n\n");
+        }
+        return builder.toString();
     }
 }
