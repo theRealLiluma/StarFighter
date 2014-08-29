@@ -22,4 +22,8 @@ public abstract class CustomPanel extends JPanel{
     public void muteSound(){
         
     }
+    
+    public void requestFocusForKeyInput(){
+        this.requestFocus();
+    }
 }

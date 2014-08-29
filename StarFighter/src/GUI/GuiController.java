@@ -87,6 +87,7 @@ public class GuiController {
         visiblePanel = panels.get("game");
         frame.add(visiblePanel);
         frame.pack();
+        visiblePanel.requestFocusForKeyInput();
     }
     
     //framesize updaten
