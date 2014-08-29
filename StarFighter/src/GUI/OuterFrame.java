@@ -12,13 +12,11 @@ import utility.FontInitializer;
  */
 public class OuterFrame extends JFrame{
     //variables
-    private DomeinController domCntrl;
     
     //constructor
-    public OuterFrame(DomeinController domCntrl){
+    public OuterFrame(){
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getClassLoader().getResource("assets/images/thumbs/Thumbs.png")));
         this.setTitle("Star Fighter");
-        setController(domCntrl);
         //setten van cursor
         this.setCursor(CursorSelector.getInstance().getRequestedCursor("default"));
         //setten van font
@@ -33,7 +31,4 @@ public class OuterFrame extends JFrame{
     }
     
     //private settermethodes
-    private void setController(DomeinController domCntrl){
-        this.domCntrl = domCntrl;
-    }
 }

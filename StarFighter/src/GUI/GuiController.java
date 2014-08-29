@@ -1,6 +1,7 @@
 package GUI;
 
 import GUI.panels.CustomPanel;
+import GUI.panels.GamePanel;
 import GUI.panels.OptionPanel;
 import GUI.panels.StartPanel;
 import configuration.ConfigurationHandler;
@@ -41,6 +42,7 @@ public class GuiController {
         //init de mogelijke frames
         panels.put("start", new StartPanel());
         panels.put("options", new OptionPanel());
+        panels.put("game", new GamePanel());
     }
     
     private void clearFrame(boolean stopSound){
@@ -75,6 +77,14 @@ public class GuiController {
     public void toOptions(){
         clearFrame(false);
         visiblePanel = panels.get("options");
+        frame.add(visiblePanel);
+        frame.pack();
+    }
+    
+    //gamePanel renderen
+    public void toGame(){
+        clearFrame(true);
+        visiblePanel = panels.get("game");
         frame.add(visiblePanel);
         frame.pack();
     }

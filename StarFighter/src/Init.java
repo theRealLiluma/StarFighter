@@ -12,7 +12,7 @@ public class Init {
         ConfigurationHandler.getInstance().initConfig();
         
         //laden van frame en panels.
-        OuterFrame frame = new OuterFrame(new DomeinController());
+        OuterFrame frame = new OuterFrame();
         frame.toStartPanel();
     }
 }

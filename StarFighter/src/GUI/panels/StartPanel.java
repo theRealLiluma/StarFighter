@@ -3,8 +3,8 @@ package GUI.panels;
 import GUI.GuiController;
 import GUI.soundPlayer.References;
 import GUI.soundPlayer.SoundPlayer;
+import domein.DomeinController;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +12,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import utility.FontInitializer;
 import utility.ImageResizer;
@@ -25,10 +24,17 @@ public class StartPanel extends CustomPanel{
     //variables
     private BufferedImage backgroundImage;
     private final String BACKGROUNDMUSIC = "intro.wav";
+    //link naar domein
+    private DomeinController domCntrl;
     
     //constructor
     public StartPanel(){
         initPanel();
+        setDomeinController();
+    }
+    
+    private void setDomeinController(){
+        this.domCntrl = DomeinController.getInstance();
     }
     
     //private methodes
@@ -56,6 +62,8 @@ public class StartPanel extends CustomPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 //laden van een nieuw game.
+                domCntrl.startGame();
+                GuiController.getInstance().toGame();
             }  
         });
         buttonPanel.add(startGame);
@@ -67,6 +75,8 @@ public class StartPanel extends CustomPanel{
             @Override
             public void actionPerformed(ActionEvent e){
                 //inladen van vorig spel of meerdere save files ==> moet nog bekeken worden
+                domCntrl.loadGame();
+                GuiController.getInstance().toGame();
             }
         });
         buttonPanel.add(loadGame);
