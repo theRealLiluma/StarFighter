@@ -14,12 +14,10 @@ public class DomeinController {
     
     //domeinaccess methods
     public void startGame(){
-        System.out.println("starting game");
         game.startNewGame();
     }
     
     public void loadGame(){
-        System.out.println("loading game");
         game.loadGame();
     }
     

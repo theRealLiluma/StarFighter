@@ -23,7 +23,7 @@ import utility.ImageResizer;
 public class StartPanel extends CustomPanel{
     //variables
     private BufferedImage backgroundImage;
-    private final String BACKGROUNDMUSIC = "intro.wav";
+    private final String BACKGROUNDMUSIC = "intro2.wav";
     //link naar domein
     private DomeinController domCntrl;
     
