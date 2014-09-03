@@ -25,6 +25,9 @@ public class GamePanel extends CustomPanel implements Observer{
     //private methodes
     private void initPanel(){
         menuVisible = false;
+        //init menu's
+        
+        //keylistener
         this.setFocusable(true);
         this.addKeyListener(new KeyListener(){
             @Override
@@ -35,8 +38,6 @@ public class GamePanel extends CustomPanel implements Observer{
                 switch(e.getKeyCode()){
                     case KeyEvent.VK_ESCAPE:
                         toggleMenuVisible();
-                        System.out.println("escape pressed");
-                        System.out.println("menu = " + menuVisible);
                         break;
                 }
             }
@@ -56,6 +57,7 @@ public class GamePanel extends CustomPanel implements Observer{
         }else{
             menuVisible = true;
         }
+        this.repaint();
     }
     
     //public methodes
