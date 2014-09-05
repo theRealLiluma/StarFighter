@@ -3,6 +3,7 @@ package GUI;
 import GUI.panels.CustomPanel;
 import GUI.panels.GamePanel;
 import GUI.panels.OptionPanel;
+import GUI.panels.PlayerSelectionPanel;
 import GUI.panels.StartPanel;
 import configuration.ConfigurationHandler;
 import configuration.Resolution;
@@ -43,6 +44,7 @@ public class GuiController {
         panels.put("start", new StartPanel());
         panels.put("options", new OptionPanel());
         panels.put("game", new GamePanel());
+        panels.put("newGame", new PlayerSelectionPanel());
     }
     
     private void clearFrame(boolean stopSound){
@@ -85,6 +87,15 @@ public class GuiController {
     public void toGame(){
         clearFrame(true);
         visiblePanel = panels.get("game");
+        frame.add(visiblePanel);
+        frame.pack();
+        visiblePanel.requestFocusForKeyInput();
+    }
+    
+    //player aanmaken
+    public void toNewGame(){
+        clearFrame(true);
+        visiblePanel = panels.get("newGame");
         frame.add(visiblePanel);
         frame.pack();
         visiblePanel.requestFocusForKeyInput();

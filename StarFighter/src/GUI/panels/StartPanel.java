@@ -63,7 +63,7 @@ public class StartPanel extends CustomPanel{
             public void actionPerformed(ActionEvent e) {
                 //laden van een nieuw game.
                 domCntrl.startGame();
-                GuiController.getInstance().toGame();
+                GuiController.getInstance().toNewGame();
             }  
         });
         buttonPanel.add(startGame);

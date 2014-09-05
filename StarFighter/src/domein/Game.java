@@ -5,10 +5,11 @@ import java.util.Observer;
 
 public class Game extends Observable{
     //variabels
+    private Player player;
     
     //constructor
     public Game(){
-
+        
     }
     
     //private methodes
