@@ -7,7 +7,7 @@ import java.util.List;
 public class PlayerSelectionPanel extends CustomPanel{
     //variables
     private DomeinController domCntrl;
-    private List<String> races;
+    private List<List<String>> races;
     
     //constructor
     public PlayerSelectionPanel(){
@@ -18,7 +18,17 @@ public class PlayerSelectionPanel extends CustomPanel{
     
     //private methodes
     private void initPanel(){
+        races = domCntrl.getRaces();
         
+        System.out.println("races: ");
+        for(int i = 0; i < races.size(); i++){
+            List<String> content = races.get(i);
+            for(int j = 0; j < content.size(); j++){
+                System.out.println(content.get(j));
+            }
+            System.out.println();
+            System.out.println();
+        }
     }
     
     private void setDomeinController(){

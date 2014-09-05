@@ -1,5 +1,6 @@
 package domein;
 
+import java.util.List;
 import java.util.Observer;
 
 public class DomeinController {
@@ -13,6 +14,10 @@ public class DomeinController {
     }
     
     //domeinaccess methods
+    public List<List<String>> getRaces(){
+        return game.getRaces();
+    }
+    
     public void startGame(){
         game.startNewGame();
     }
